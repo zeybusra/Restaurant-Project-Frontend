@@ -1,0 +1,49 @@
+.footerTemplate {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "footerLeft footerCenter footerRight";
+    background-color: #212854;
+    color: #ffffff;
+    height: 100px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.text {
+    font-size: 14px;
+}
+
+.footerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.footerContainer a svg {
+    width: 30px;
+    height: 30px;
+    color: white;
+    padding-right: 10px;
+}
+
+.footerContainer div {
+    font-size: 14px;
+    font-weight: 200;
+}
+
+.insideContainer {
+    display: block;
+}
+
+.restaurantLogo {
+    display: block;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 8px;
+}
