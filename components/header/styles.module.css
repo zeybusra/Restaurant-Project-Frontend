@@ -27,13 +27,10 @@
     width: 35px;
     height: 35px;
     border-radius: 50%;
-    margin-right: auto;
-    margin-left: auto;
+    margin: auto;
     justify-content: center;
     display: flex;
     cursor: pointer;
-    margin-top: auto;
-    margin-bottom: auto;
 }
 
 .navbarRight {
@@ -41,3 +38,4 @@
     width: 5%;
     align-items: center;
 }
+
