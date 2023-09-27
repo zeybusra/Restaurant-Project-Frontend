@@ -1,0 +1,223 @@
+.accordionContentImage img {
+    border-radius: 15px;
+}
+
+
+.accordionContentItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-bottom: 1px solid #d2d2d2;
+    cursor: pointer;
+}
+
+.accordionContentItemInfo {
+    align-items: center;
+    margin-bottom: 10px;
+    width: 55%;
+}
+
+.accordionContentItemTitle, .accordionContentItemPrice {
+    font-size: 18px;
+    white-space: nowrap;
+    font-weight: 500;
+    margin: 20px 0 20px 0;
+}
+.accordionContentItemTitle{
+justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+}
+
+.accordionContentItemDescription {
+    font-size: 16px;
+    font-weight: 200;
+    white-space: normal;
+    line-height: 20px;
+}
+
+.accordionContentBasket {
+    cursor: pointer;
+}
+
+.accordionContainer hr {
+    display: none;
+}
+
+.active {
+    display: flex;
+}
+
+.inActive {
+    display: none;
+}
+
+
+.basketAddModalContainer {
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    background-color: white;
+    width: 50%;
+    height: 200px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    z-index: 99;
+}
+
+
+.itemDetailModal {
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    background-color: white;
+    width: 50%;
+    height: 500px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    z-index: 99;
+}
+
+.basketAddModalContent ,.itemDetailModalContent{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.itemDetailModalContent{
+    height: 100%;
+    flex-direction: column;
+}
+
+.basketAddModalContent{
+    height: 70%;
+    flex-direction: row;
+}
+
+
+.basketAddModalContent div:first-child {
+    width: 100%;
+}
+
+.basketAddModalContent div:first-child textarea {
+    width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+    .basketAddModalContainer {
+        width: 90%;
+        height: 50%;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1000px) {
+    .basketAddModalContainer {
+        width: 70%;
+        height: 50%;
+    }
+}
+
+/*.basketAddModalContainer div{*/
+/*    width: 80%;*/
+/*}*/
+
+.basketAddModalContainer div div {
+    /*width: 100%;*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    /*justify-content: center;*/
+    /*display: flex;*/
+}
+
+.basketAddModalContainer div textarea {
+    width: 80%;
+    font-size: 14px;
+    padding-top: 30px;
+    text-align: center;
+    height: 60px;
+}
+
+.modalCloseButton {
+    background-color: white !important;
+    border-radius: 50% !important;
+    width: 25px !important;
+    height: 25px !important;
+    position: absolute;
+    border: 1px solid black !important;
+    top: 4%;
+    right: 2%;
+    cursor: pointer !important;
+    color: black !important;
+    padding: unset !important;
+    box-shadow: unset !important;
+    display: block !important;
+}
+
+.overlay{
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 90;
+    cursor: pointer;
+}
+
+.addBasketButton {
+    padding: 10px 0 10px 0;
+    width: 50%;
+    color: white;
+    white-space: nowrap;
+    border-radius: 5px;
+    border: unset;
+    text-align: center;
+    background-color: #e05c5c;
+    margin: auto;
+    cursor: pointer;
+    justify-content: center;
+    display: flex;
+}
+
+.basketItemCount div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.basketItemCount {
+    width: 30% !important;
+    margin: unset !important;
+}
+
+.basketItemQuantityButton{
+    cursor: pointer;
+}
+
+.basketItemQuantityNumber{
+    margin: 5px 0 5px 0;
+    cursor: default;
+}
