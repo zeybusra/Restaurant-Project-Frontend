@@ -18,6 +18,7 @@ function Header({ children }) {
       {/*<header>*/}
 
       <Image
+        alt={'app logo'}
         className={styles.profileImage}
         src={appLogo}
         width={40}
@@ -43,6 +44,7 @@ function Header({ children }) {
           src={profilePic}
           width={40}
           height={40}
+          alt={'Picture of the author'}
         />
 
         {/*{isOpen && (*/}

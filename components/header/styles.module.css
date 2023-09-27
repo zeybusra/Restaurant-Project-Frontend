@@ -16,7 +16,7 @@
     border: none;
     padding: 10px;
     width: 60%;
-    height: 25px;
+    height: 40px;
     color: #464646;
     font-size: 14px;
     margin-right: 40px;
@@ -31,6 +31,7 @@
     justify-content: center;
     display: flex;
     cursor: pointer;
+    z-index: 99999;
 }
 
 .navbarRight {
