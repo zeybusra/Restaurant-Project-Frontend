@@ -11,6 +11,20 @@ import fastWaiter from '../image/fast-waiter.png';
 import { Textarea } from '@nextui-org/react';
 
 export default function MenuItem() {
+  const openItemDetailModal = () => {
+    setIsItemDetailModalOpen(true);
+    document.body.style.overflowY = 'hidden';
+  };
+
+  const closeItemDetailModal = () => {
+    setIsItemDetailModalOpen(false);
+    document.body.style.overflowY = 'scroll';
+  };
+  const closeBasketAddModal = () => {
+    setIsBasketAddModalOpen(false);
+    document.body.style.overflowY = 'scroll';
+  };
+
   const [isItemAdded, setIsItemAdded] = React.useState(1);
   const [isItemDetailModalOpen, setIsItemDetailModalOpen] =
     React.useState(false);
@@ -66,7 +80,7 @@ export default function MenuItem() {
   return (
     <div>
       <div
-        onClick={() => setIsBasketAddModalOpen(false)}
+        onClick={closeBasketAddModal}
         className={`${isBasketAddModalOpen ? styles.overlay : styles.inActive}`}
       ></div>
 
@@ -109,7 +123,7 @@ export default function MenuItem() {
 
         {/*Close Modal Button*/}
         <button
-          onClick={() => setIsBasketAddModalOpen(false)}
+          onClick={closeBasketAddModal}
           className={styles.modalCloseButton}
         >
           X
@@ -154,7 +168,7 @@ export default function MenuItem() {
               className={styles.accordionContentBasket}
             >
               {/*{isLoading ? (*/}
-              // TODO: required loading button component
+              {/*TODO: required loading button component*/}
               {/*) : (*/}
               <button onClick={addBasket} className={styles.addBasketButton}>
                 SEPETE EKLE
@@ -166,7 +180,7 @@ export default function MenuItem() {
 
         {/*Close Modal Button*/}
         <button
-          onClick={() => setIsItemDetailModalOpen(false)}
+          onClick={closeItemDetailModal}
           className={styles.modalCloseButton}
         >
           X
@@ -174,7 +188,7 @@ export default function MenuItem() {
       </div>
 
       <div
-        onClick={() => setIsItemDetailModalOpen(false)}
+        onClick={closeItemDetailModal}
         className={`${
           isItemDetailModalOpen ? styles.overlay : styles.inActive
         }`}
@@ -187,7 +201,7 @@ export default function MenuItem() {
           <div className={styles.accordionContentItem}>
             <div className={styles.accordionContentImage}>
               <Image
-                onClick={() => setIsItemDetailModalOpen(true)}
+                onClick={openItemDetailModal}
                 alt={'food-example'}
                 src={item.image}
                 width={150}
@@ -196,7 +210,7 @@ export default function MenuItem() {
             </div>
             <div className={styles.accordionContentItemInfo}>
               <div
-                onClick={() => setIsItemDetailModalOpen(true)}
+                onClick={openItemDetailModal}
                 className={styles.accordionContentItemTitle}
               >
                 <h3>{item.name}</h3>
@@ -230,7 +244,9 @@ export default function MenuItem() {
                 onClick={() => setIsBasketAddModalOpen(true)}
                 className={styles.accordionContentBasket}
               >
-                <button className={styles.addBasketButton}>SEPETE EKLE</button>
+                <button onClick={addBasket} className={styles.addBasketButton}>
+                  SEPETE EKLE
+                </button>
               </div>
             </div>
           </div>

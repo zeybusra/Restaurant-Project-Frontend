@@ -13,6 +13,11 @@ import Link from 'next/link';
 import { toUnitless } from '@mui/material/styles/cssUtils';
 
 export default function MenuLayout({ children }) {
+  const callWaiter = () => {
+    setIsWaiterModalActive(true);
+    document.body.style.overflowY = 'hidden';
+  };
+
   const [isWaiterModalActive, setIsWaiterModalActive] = useState(false);
   const [isCallWaiter, setIsCallWaiter] = useState(false);
   const [isSelectedButtons, setIsSelectedButtons] = useState(new Set([]));
@@ -35,6 +40,7 @@ export default function MenuLayout({ children }) {
     const selectedButtonsArray = isSelectedButtons;
     console.log(selectedButtonsArray);
     console.log(Object.keys(selectedButtonsArray).length);
+    document.body.style.overflowY = 'scroll';
 
     // if (Object.keys(selectedButtonsArray).length > 0) {
     console.log('selectedButtonsArray is full');
@@ -76,7 +82,7 @@ export default function MenuLayout({ children }) {
           <Image
             src={waiterBell}
             alt={'call-waiter'}
-            onClick={() => setIsWaiterModalActive(true)}
+            onClick={callWaiter}
             className={`callWaiter ${styles.navbarRightImg}`}
             width={45}
             height={45}
