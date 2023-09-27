@@ -1,13 +1,27 @@
-.container{
+.container {
     grid-template-columns: 1fr min(1440px, 94%) 1fr;
     grid-template-rows: 96px auto 72px;
-    font-family: Inter, sans-serif;
+    font-family: 'QuickSand', sans-serif!important;
 }
 
-.container > *{
-    grid-column:2;
+.container > * {
+    grid-column: 2;
 }
 
-.container >.fluid{
-   grid-column: 1 / -1;
+.container > .fluid {
+    grid-column: 1 / -1;
+}
+
+
+.bodyContainer{
+    margin-left: 25%;
+    margin-right: 25%;
+    box-shadow: 0 -8px 12px -6px #222;
+}
+
+@media only screen and (max-width: 768px) {
+    .bodyContainer{
+        margin-left: 0%!important;
+        margin-right: 0%!important;
+    }
 }
