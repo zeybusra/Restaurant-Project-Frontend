@@ -1,0 +1,209 @@
+.navbarRightImg {
+    /*width: 30px;*/
+    /*height: 30px;*/
+    cursor: pointer;
+    color: black;
+}
+
+.navbarLeft {
+    display: flex;
+    width: 25%;
+    align-items: center;
+}
+
+.navbarContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px 0 10px 0;
+}
+
+.profileImage {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin: auto;
+    justify-content: center;
+    display: flex;
+    cursor: pointer;
+    z-index: 99999;
+}
+
+.navbarRight {
+    display: flex;
+    width: 45%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+@media only screen and (max-width: 400px) {
+    .navbarRight {
+        width: 55%;
+    }
+}
+
+@media only screen and (max-width: 450px) and (min-width: 400px) {
+    .navbarRight {
+        width: 40%;
+    }
+}
+
+@media only screen and (max-width: 800px) and (min-width: 450px) {
+    .navbarRight {
+        width: 35%;
+    }
+}
+
+.tableInfo {
+    border: 1px solid red;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: default;
+}
+
+.callWaiterContainer {
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    background-color: white;
+    width: 40%;
+    height: 40%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    z-index: 99;
+}
+
+@media only screen and (max-width: 600px) {
+    .callWaiterContainer {
+        width: 90%;
+        height: 50%;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1000px) {
+    .callWaiterContainer {
+        width: 70%;
+        height: 50%;
+    }
+}
+
+.callWaiterContentActive {
+    display: flex;
+}
+
+.callWaiterContentInactive {
+    display: none;
+}
+
+.modalCloseButton {
+    background-color: white;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    border: 1px solid black;
+    top: 2%;
+    right: 2%;
+    cursor: pointer;
+}
+
+.overlay {
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 90;
+}
+
+.overlayInactive {
+    display: none;
+}
+
+.contentIcon {
+    width: 50px;
+    height: 50px;
+}
+
+.callWaiterButton {
+    background-color: #6a8b29;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    border: unset;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    padding: 8px 20px 8px 20px;
+    font-size: 15px;
+    font-weight: lighter;
+    margin-top: 20px;
+}
+
+.basicWishes button {
+    background-color: #ffffff;
+    color: #313131;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+    font-size: 16px;
+    font-weight: lighter;
+    margin-top: 10px;
+    border: 1px solid #6e6e6e;
+    margin-left: 4px;
+}
+
+.basicWishes {
+    display: block;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.callWaiterContent span {
+    margin-top: 20px;
+}
+
+.callWaiterContent {
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    line-height: 1.5;
+    width: 90%;
+    height: 100%;
+}
+
+.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inActive {
+    display: none;
+}
+
+.rejectWaiterButton {
+    background-color: #b61212;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+    font-size: 16px;
+    font-weight: lighter;
+    margin-top: 10px;
+    margin-left: 4px;
+    border: unset;
+}
