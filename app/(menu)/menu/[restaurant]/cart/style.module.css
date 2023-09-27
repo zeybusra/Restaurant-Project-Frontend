@@ -1,0 +1,297 @@
+.basketContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.basketItemContent {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    margin: 10px auto 10px auto;
+    border: 1px solid #e2e2e2;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.basketItemContent img {
+    border-radius: 10px;
+}
+
+.basketItemText {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 50%;
+    margin-left: 20px;
+}
+
+.basketClearAllButton {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    color: black;
+}
+
+.basketItemText span {
+    font-size: 14px;
+    color: #4e4e4e;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.basketItemQuantityButton {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    color: black;
+}
+
+.basketSummary {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    margin: 10px auto 10px auto;
+    border: 1px solid #e2e2e2;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffb202;
+}
+
+.basketTotalPriceButton {
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 8px 20px 8px 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    white-space: normal;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}
+
+@media only screen and (min-width: 400px) {
+    .basketTotalPriceButton {
+        white-space: nowrap;
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+    .basketTotalPriceButton {
+        font-size: 14px
+    }
+}
+
+.basketSummary span {
+    font-size: 14px;
+    color: #4e4e4e;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.basketOrderNotes {
+    width: 60%;
+}
+
+@media only screen and (max-width: 1100px) {
+    .basketOrderNotes {
+        width: 40%;
+    }
+}
+
+.basketOrderNotes div div {
+    margin-top: 20px;
+}
+
+.basketOrderNotes div div textarea {
+    border-radius: 5px;
+    padding: 10px;
+    font-family: "Poppins", sans-serif;
+    width: 100%;
+}
+
+.basketSummary h3 {
+    font-size: 16px;
+    color: #4e4e4e;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.basketAllOrders {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    margin: 10px auto 10px auto;
+    border: 1px solid #e2e2e2;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.basketAllOrdersItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.basketAllOrdersItem img {
+    border-radius: 10px;
+}
+
+.basketAllOrders h1 {
+    margin-bottom: 30px;
+}
+
+.basketAllOrdersItemText span {
+    font-size: 14px;
+    color: #4e4e4e;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.basketAllOrdersItemText {
+    width: 70%;
+    margin-left: 20px;
+}
+
+.basketAllOrdersItemText h3 {
+    font-size: 16px;
+    color: #4e4e4e;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.basketTotalPrice h3 {
+    background-color: white;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    margin-left: 10px;
+    justify-content: center;
+    text-align: center;
+    cursor: default;
+}
+
+.basketTotalPrice {
+    width: 35%;
+}
+
+@media only screen and (max-width: 400px) {
+    .basketTotalPrice h3 {
+        font-size: 14px;
+    }
+}
+
+
+@media only screen and (max-width: 400px) {
+    .basketTotalPrice {
+        width: 40%;
+    }
+}
+
+.orderApprovalModalContainer {
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    background-color: white;
+    width: 40%;
+    height: 40%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    z-index: 99;
+}
+
+.active {
+    display: flex;
+}
+
+.inActive {
+    display: none;
+}
+
+.modalCloseButton {
+    background-color: white;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    border: 1px solid black;
+    top: 2%;
+    right: 2%;
+    cursor: pointer;
+}
+
+
+.overlay {
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 90;
+}
+
+.approvalContainer {
+    display: flex;
+    justify-content: space-evenly;
+    width: 60%;
+    margin-top: 30px;
+}
+
+.approvalContainer button {
+    border-radius: 5px;
+    padding: 10px 20px 10px 20px;
+    color: white;
+    border: unset;
+    font-size: 15px;
+    font-weight: lighter;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.approvalButton {
+    background-color: #6a8b29;
+}
+
+.rejectButton {
+    background-color: #d20a0a;
+}
+
+.afterOrderApproval, .beforeOrderApproval {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.beforeOrderApproval image {
+    margin-bottom: 20px;
+}
+
+.afterOrderApproval div {
+    width: 80%;
+    margin-top: 15px;
+    line-height: 24px;
+}
