@@ -1,5 +1,41 @@
-.personIcon{
+.personIcon {
     width: 20px;
     height: 20px;
     color: black;
+}
+
+.sidebar {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    height: 100%;
+    min-height: 1200px;
+    min-width: 240px;
+}
+
+.sidebar a {
+    height: 50px;
+    justify-content: flex-start;
+    display: flex;
+    padding-left: 30px;
+    align-items: center;
+}
+
+.sidebar a:hover {
+    /*background:linear-gradient(294.17deg, rgb(129 75 149) 35.57%, rgb(72 43 82) 92.42%, rgb(72 42 83) 92.42%);*/
+    background-color: #212854;
+    width: 100%;
+    /*padding:0 10px 0 10px;*/
+    /*border-radius: 10px;*/
+    color: white;
+    display:flex;
+    align-items:center;
+    text-align: left;
+}
+
+.iconStyle{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
 }

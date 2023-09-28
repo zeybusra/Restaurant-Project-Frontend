@@ -3,7 +3,9 @@
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     grid-template-areas: "footerLeft footerCenter footerRight";
+    /*background:linear-gradient(294.17deg, rgb(129 75 149) 35.57%, rgb(72 43 82) 92.42%, rgb(72 42 83) 92.42%);*/
     background-color: #212854;
+
     color: #ffffff;
     height: 60px;
     width: 100%;
