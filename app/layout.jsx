@@ -1,6 +1,8 @@
 import './styles/reset.css';
 import './styles/global.css';
 import { Quicksand } from 'next/font/google';
+import React from 'react';
+import { Providers } from './providers';
 
 const quicksand = Quicksand({
   weight: ['300', '400', '500', '600', '700'],
@@ -15,8 +17,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={quicksand.className}>
-      <body className="bodyContainer">
-        <main className="container">{children}</main>
+      <body>
+        <main className="container">
+          <Providers>{children}</Providers>
+        </main>
       </body>
     </html>
   );

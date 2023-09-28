@@ -1,3 +1,14 @@
+
+.navbarLeft {
+    display: flex;
+    width: 240px;
+}
+
+.navbarRightContainer {
+    display: flex;
+    width: 150px;
+}
+
 .navbarRightImg {
     width: 30px;
     height: 30px;
@@ -36,7 +47,12 @@
 
 .navbarRight {
     display: flex;
-    width: 5%;
+    width: 30%;
     align-items: center;
 }
 
+.headerContainer{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}

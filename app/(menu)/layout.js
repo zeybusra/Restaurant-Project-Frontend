@@ -4,13 +4,12 @@ import styles from '/app/(menu)/style.module.css';
 import Image from 'next/image';
 import { PiPhoneCall } from 'react-icons/pi';
 import { BsCart3 } from 'react-icons/bs';
-import appLogo from '/components/image/work.png';
+import appLogo from '/components/image/waiter-call-icon-black.png';
 import callWaiter from '/components/image/call-waiter.png';
 import waiterBell from '/components/image/desk-bell.png';
 import fastWaiter from '/components/image/fast-waiter.png';
 import waiterCallIcon from '/components/image/waiter-icon-1.png';
 import Link from 'next/link';
-import { toUnitless } from '@mui/material/styles/cssUtils';
 
 export default function MenuLayout({ children }) {
   const callWaiter = () => {
@@ -62,7 +61,7 @@ export default function MenuLayout({ children }) {
   };
 
   return (
-    <div>
+    <div className="menuContainer">
       <div className={styles.navbarContainer}>
         <div className={styles.navbarLeft}>
           <span>MenuApp</span>

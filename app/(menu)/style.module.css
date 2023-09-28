@@ -29,6 +29,7 @@
     display: flex;
     cursor: pointer;
     z-index: 99999;
+    margin-left: 10px;
 }
 
 .navbarRight {

@@ -1,0 +1,98 @@
+.gridTemplate {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas:
+
+    "header header"
+"sidebar content"
+"footer footer"
+
+}
+
+/*.mainHeader {*/
+/*    grid-area: header;*/
+/*    width: 100%;*/
+/*    height: 64px;*/
+/*    !*justify-content: space-between;*!*/
+/*    !*display: flex;*!*/
+/*    background-color: white;*/
+/*    z-index: 99999;*/
+/*    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;*/
+/*}*/
+
+.content {
+    grid-area: content;
+}
+
+.sidebar {
+    grid-area: sidebar;
+}
+
+.mainFooter {
+    grid-area: footer;
+}
+
+
+.navbarLeft {
+    display: flex;
+    width: 240px;
+}
+
+.navbarRightContainer {
+    display: flex;
+    width: 150px;
+}
+
+.navbarRightImg {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.navbarContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+}
+
+.searchInput {
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    width: 60%;
+    height: 40px;
+    color: #464646;
+    font-size: 14px;
+    margin-right: 40px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.profileImage {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin: auto;
+    justify-content: center;
+    display: flex;
+    cursor: pointer;
+    z-index: 99999;
+}
+
+.navbarRight {
+    display: flex;
+    width: 30%;
+    align-items: center;
+}
+
+.headerContainer {
+    grid-area: header;
+    width: 100%;
+    height: 64px;
+    justify-content: space-between;
+    display: flex;
+    background-color: white;
+    z-index: 99999;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}

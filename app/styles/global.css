@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .container {
     grid-template-columns: 1fr min(1440px, 94%) 1fr;
     grid-template-rows: 96px auto 72px;
@@ -13,14 +17,14 @@
 }
 
 
-.bodyContainer{
+.menuContainer{
     margin-left: 25%;
     margin-right: 25%;
     box-shadow: 0 -8px 12px -6px #222;
 }
 
 @media only screen and (max-width: 768px) {
-    .bodyContainer{
+    .menuContainer{
         margin-left: 0%!important;
         margin-right: 0%!important;
     }

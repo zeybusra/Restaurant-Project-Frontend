@@ -12,11 +12,11 @@ import restaurantImage8 from '/components/image/restaurant-image-11.jpeg';
 import restaurantImage9 from '/components/image/restaurant-image-12.jpeg';
 import restaurantImage10 from '/components/image/restaurant-image-13.jpeg';
 import styles from './styles.module.css';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
+// import Box from '@mui/material/Box';
+// import TextField from '@mui/material/TextField';
+// import Autocomplete from '@mui/material/Autocomplete';
+// import Button from '@mui/material/Button';
+// import Stack from '@mui/material/Stack';
 import Link from 'next/link';
 import {
   PiFacebookLogoLight,
@@ -71,63 +71,63 @@ export default function Restaurant({ params }) {
       <div className={styles.reservationArea}>
         <div className={styles.formArea}>
           <h2>BOOK A TABLE!</h2>
-          <Box className={styles.formBox}>
-            {/*<LocalizationProvider dateAdapter={AdapterDayjs}>*/}
-            {/*  <DemoContainer components={['DatePicker']}>*/}
-            {/*    <DatePicker label="Pick date" />*/}
-            {/*  </DemoContainer>*/}
-            {/*</LocalizationProvider>*/}
+          {/*<Box className={styles.formBox}>*/}
+          {/*  /!*<LocalizationProvider dateAdapter={AdapterDayjs}>*!/*/}
+          {/*  /!*  <DemoContainer components={['DatePicker']}>*!/*/}
+          {/*  /!*    <DatePicker label="Pick date" />*!/*/}
+          {/*  /!*  </DemoContainer>*!/*/}
+          {/*  /!*</LocalizationProvider>*!/*/}
 
-            <Autocomplete
-              disablePortal
-              id="combo-box-demo"
-              options={top100Films}
-              size="small"
-              sx={{ width: 195 }}
-              renderInput={(params) => <TextField {...params} label="Date" />}
-            />
+          {/*  <Autocomplete*/}
+          {/*    disablePortal*/}
+          {/*    id="combo-box-demo"*/}
+          {/*    options={top100Films}*/}
+          {/*    size="small"*/}
+          {/*    sx={{ width: 195 }}*/}
+          {/*    renderInput={(params) => <TextField {...params} label="Date" />}*/}
+          {/*  />*/}
 
-            <Autocomplete
-              disablePortal
-              id="combo-box-demo"
-              options={top100Films}
-              size="small"
-              sx={{ width: 195 }}
-              renderInput={(params) => <TextField {...params} label="Time" />}
-            />
+          {/*  <Autocomplete*/}
+          {/*    disablePortal*/}
+          {/*    id="combo-box-demo"*/}
+          {/*    options={top100Films}*/}
+          {/*    size="small"*/}
+          {/*    sx={{ width: 195 }}*/}
+          {/*    renderInput={(params) => <TextField {...params} label="Time" />}*/}
+          {/*  />*/}
 
-            <Autocomplete
-              disablePortal
-              id="combo-box-demo"
-              options={person}
-              size="small"
-              sx={{ width: 195 }}
-              renderInput={(params) => <TextField {...params} label="Person" />}
-            />
-          </Box>
-          <Box className={styles.formBox}>
-            <TextField
-              id="demo-helper-text-misaligned-no-helper"
-              label="Full Name"
-              size="small"
-            />
-            <TextField
-              id="demo-helper-text-misaligned-no-helper"
-              size="small"
-              label="Mail"
-            />
-            <TextField
-              id="demo-helper-text-misaligned-no-helper"
-              size="small"
-              label="Phone"
-            />
-          </Box>
+          {/*  <Autocomplete*/}
+          {/*    disablePortal*/}
+          {/*    id="combo-box-demo"*/}
+          {/*    options={person}*/}
+          {/*    size="small"*/}
+          {/*    sx={{ width: 195 }}*/}
+          {/*    renderInput={(params) => <TextField {...params} label="Person" />}*/}
+          {/*  />*/}
+          {/*</Box>*/}
+          {/*<Box className={styles.formBox}>*/}
+          {/*  <TextField*/}
+          {/*    id="demo-helper-text-misaligned-no-helper"*/}
+          {/*    label="Full Name"*/}
+          {/*    size="small"*/}
+          {/*  />*/}
+          {/*  <TextField*/}
+          {/*    id="demo-helper-text-misaligned-no-helper"*/}
+          {/*    size="small"*/}
+          {/*    label="Mail"*/}
+          {/*  />*/}
+          {/*  <TextField*/}
+          {/*    id="demo-helper-text-misaligned-no-helper"*/}
+          {/*    size="small"*/}
+          {/*    label="Phone"*/}
+          {/*  />*/}
+          {/*</Box>*/}
 
-          <Stack className={styles.buttonDone} direction="row" spacing={2}>
-            <Button color="warning" variant="contained" href="/">
-              MAKE A RESERVATION
-            </Button>
-          </Stack>
+          {/*<Stack className={styles.buttonDone} direction="row" spacing={2}>*/}
+          {/*  <Button color="warning" variant="contained" href="/">*/}
+          {/*    MAKE A RESERVATION*/}
+          {/*  </Button>*/}
+          {/*</Stack>*/}
         </div>
         <div className={styles.formText}>
           <Image

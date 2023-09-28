@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './styles.module.css';
 import Image from 'next/image';
-import restaurantLogo from '/components/image/restaurant-logo-2.png';
+import restaurantLogo from '/components/image/waiter-call-icon-.png';
 import { PiFacebookLogoLight } from 'react-icons/pi';
 import { PiInstagramLogoLight } from 'react-icons/pi';
 import { PiLinkedinLogoLight } from 'react-icons/pi';
@@ -35,7 +35,7 @@ function Footer({ children }) {
             height={40}
             className={styles.restaurantLogo}
           />
-          <span>Restaurant App</span>
+          {/*<span>Restaurant App</span>*/}
         </div>
       </div>
 
