@@ -18,9 +18,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={quicksand.className}>
       <body>
-        <main className="container">
+        {/*<main className="container">*/}
           <Providers>{children}</Providers>
-        </main>
+        {/*</main>*/}
       </body>
     </html>
   );

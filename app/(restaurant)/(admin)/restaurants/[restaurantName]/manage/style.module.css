@@ -1,0 +1,173 @@
+.cardContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    height: 100%;
+    border-radius: 10px;
+    /*margin-top: 30px;*/
+    padding: 20px;
+    cursor: pointer;
+}
+
+.pageHeader {
+    width: 140px;
+    display: flex;
+    /*background: linear-gradient(294.17deg, rgb(129 75 149) 35.57%, rgb(72 43 82) 92.42%, rgb(72 42 83) 92.42%);*/
+    color: #484848;
+    margin-bottom: 20px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.cardGridContainer {
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto;
+    display: grid;
+    grid-gap: 20px;
+}
+
+@media only screen and (max-width: 1400px) {
+    .cardGridContainer {
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto;
+        display: grid;
+        grid-gap: 20px;
+    }
+}
+
+
+.cardBody {
+    display: flex;
+    flex-direction: column;
+    /*align-items: center;*/
+    justify-content: flex-start;
+    margin-left: 50px;
+}
+
+.cardBody span {
+    margin-bottom: 20px;
+    display: flex;
+    width: 80%;
+    align-items: center;
+}
+
+.cardIcon {
+    margin-right: 20px;
+    width: 20px;
+    height: 20px;
+}
+
+.cardHeader h1 {
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardHeader {
+    background-color: white;
+    padding: 5px 12px 5px 12px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+}
+
+.addRestaurantButton {
+    /* background: linear-gradient(294.17deg, rgb(129 75 149) 35.57%, rgb(72 43 82) 92.42%, rgb(72 42 83) 92.42%); */
+    background-color: #212854;
+    border-radius: 10px;
+    /* width: 30px; */
+    color: white;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    padding: 5px 8px 5px 8px;
+    height: 100%;
+}
+
+.addRestaurantIcon {
+    text-decoration-color: white;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    height: 20px;
+    width: 20px;
+}
+
+.pageHeaderContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.addRestaurantButtonHover {
+    width: 100%;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+/*@keyframes floating {*/
+/*    0% { transform: translate(0, 0px); }*/
+/*    50%  { transform: translate(-3px, 0px); }*/
+/*    100%   { transform: translate(-5px,0px); }*/
+/*}*/
+
+/*.floatingLeft {*/
+/*    animation-name: floating;*/
+/*    animation-duration: 3s;*/
+/*    animation-iteration-count: infinite;*/
+/*    animation-timing-function: ease-in-out;*/
+/*}*/
+
+
+/*.animated {*/
+/*    -webkit-animation-duration: 3s;*/
+/*    animation-duration: 3s;*/
+/*    !*-webkit-animation-fill-mode: both;*!*/
+/*    !*animation-fill-mode: both;*!*/
+/*}*/
+
+/*.test {*/
+/*    transition: margin-right 2s;*/
+/*    position: relative;*/
+/*    float: right;*/
+/*    background-color: #212854;*/
+/*    z-index: 100;*/
+/*    border-radius: 10px;*/
+/*    width: 30px;*/
+/*    align-items: center;*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    cursor: pointer;*/
+/*    padding: 5px 8px 5px 8px;*/
+/*    height: 100%;*/
+
+/*}*/
+
+/*.addRestaurantButton {*/
+/*    position: relative;*/
+/*    float: right;*/
+/*    margin-right: 10px;*/
+/*    background-color: #212854;*/
+/*    transition: margin-right 2s;*/
+/*    z-index: 1001;*/
+/*    color: white;*/
+/*    cursor: pointer;*/
+/*    padding: 5px 8px 5px 8px;*/
+/*    border-radius: 10px;*/
+/*}*/
+
+
+/*.test:hover + .addRestaurantButton {*/
+/*    margin-right: 0px;*/
+/*}*/
+
+.pageIcon{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
