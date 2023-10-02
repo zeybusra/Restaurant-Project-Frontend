@@ -5,15 +5,65 @@ import Image from 'next/image';
 import {AiOutlineEdit} from "react-icons/ai";
 import {AiOutlineDelete} from "react-icons/ai";
 import {MdDragIndicator} from "react-icons/md";
+import {BsExclamationCircle} from "react-icons/bs";
 import {Button, Input} from "@nextui-org/react";
 import foodImage from '/components/image/french-fries.jpeg';
+import {RadioGroup, Radio} from "@nextui-org/react";
+import {RxInfoCircled} from "react-icons/rx";
 
 export default function MenuManage({params}) {
-  const [editModalIsOpen, setEditModalIsOpen] = React.useState(false);
+  const [editCategoriesModalIsOpen, setCategoriesEditModalIsOpen] = React.useState(false);
+  const [editFoodItemsModalIsOpen, setEditFoodItemsModalIsOpen] = React.useState(false);
+  const [deleteCategoryModalIsOpen, setDeleteCategoryModalIsOpen] = React.useState(false);
+  const [deleteFoodItemModalIsOpen, setDeleteFoodItemModalIsOpen] = React.useState(false);
+  const [isCategorySelected, setIsCategorySelected] = React.useState(false);
 
-  const handleEditModal = (e) => {
-    setEditModalIsOpen(!editModalIsOpen);
-    if (editModalIsOpen) {
+  const selectCategory = (e) => {
+    setIsCategorySelected(!isCategorySelected);
+    const divElement = e.target.closest('div').parentNode;
+
+    if (e.target?.closest('div')?.parentNode.className.includes('categoryButton') && isCategorySelected === true) {
+      console.log(11122);
+      divElement.style.color = '#ffffff';
+      divElement.style.backgroundColor = '#202854';
+    } else if (e.target?.closest('div')?.parentNode.className.includes('categoryButton') && isCategorySelected === false) {
+      console.log(3333);
+      divElement.style.color = '#050505';
+      divElement.style.backgroundColor = '#ffffff';
+    }
+  }
+
+  const deleteCategoryModal = (e) => {
+    setDeleteCategoryModalIsOpen(!deleteCategoryModalIsOpen);
+    if (deleteCategoryModalIsOpen) {
+      document.body.style.overflowY = 'scroll';
+    } else {
+      document.body.style.overflowY = 'hidden';
+    }
+  }
+
+  const deleteFoodItemModal = (e) => {
+    setDeleteFoodItemModalIsOpen(!deleteFoodItemModalIsOpen);
+    if (deleteFoodItemModalIsOpen) {
+      document.body.style.overflowY = 'scroll';
+    } else {
+      document.body.style.overflowY = 'hidden';
+    }
+  }
+
+  const editCategoriesModal = (e) => {
+    setCategoriesEditModalIsOpen(!editCategoriesModalIsOpen);
+    if (editCategoriesModalIsOpen) {
+      document.body.style.overflowY = 'scroll';
+    } else {
+      document.body.style.overflowY = 'hidden';
+    }
+  }
+
+  const editFoodItemsModal = (e) => {
+    console.log(46543)
+    setEditFoodItemsModalIsOpen(!editFoodItemsModalIsOpen);
+    if (editFoodItemsModalIsOpen) {
       document.body.style.overflowY = 'scroll';
     } else {
       document.body.style.overflowY = 'hidden';
@@ -82,35 +132,57 @@ export default function MenuManage({params}) {
   return (
     <div className={styles.menuGridContainer}>
       <div className={styles.menuHeader}>
-        <span>Menünüzü düzenlemeye hazır mısınız? Önce Ana kategorileri ekleyerek başlayabilirsiniz! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, quod.</span>
+        <span>Menünüzü daha düzenli hale getirmek için ana kategoriler eklemek büyük bir adımdır. İşte nasıl başlayabileceğiniz:</span>
       </div>
 
-      {/*-------------CATEGORIES-------------*/}
+      {/*-------------CATEGORIES-------------*/
+      }
       <div className={styles.menuCategories}>
-        <Button onClick={addCategoryInput} className={styles.addCategoryButton}>Yeni Kategori Ekle</Button>
+
+        <div className={styles.infoAboutMenu}>
+          <RxInfoCircled className={styles.infoAboutIcon}/>
+          <div style={{width:"95%", display:"flex", flexDirection:"column"}}>
+            <span style={{fontWeight: "600"}}>Kategorileri Tanımlayın: </span>
+            <span>Ana kategorilerinizi belirleyin.Örneğin, "Başlangıçlar," "Ana Yemekler," "Tatlılar," gibi kategoriler oluşturabilirsiniz.</span>
+          </div>
+        </div>
+
+        <Button  onClick={editCategoriesModal} className={styles.addCategoryButton}>Yeni Kategori Ekle</Button>
         {categories.map((category, index) => (
-          <Button key={index} onClick={addCategoryInput} className={styles.categoryButton}>
+          <div onClick={selectCategory} key={index} className={styles.categoryButton}>
             <div className={styles.alignItems}>
               <MdDragIndicator className={styles.dragAndDropIcon}/>
               <span>{category.name}</span>
             </div>
             <div className={styles.alignItems}>
-              <AiOutlineEdit onClick={handleEditModal} className={styles.editIcon}/>
-              <AiOutlineDelete className={styles.deleteIcon}/>
+              <AiOutlineEdit onClick={editCategoriesModal} className={styles.editIcon}/>
+              <AiOutlineDelete onClick={deleteCategoryModal} className={styles.deleteIcon}/>
             </div>
-          </Button>
+          </div>
         ))}
       </div>
-      {/*-------------CATEGORIES-------------*/}
+      {/*-------------CATEGORIES-------------*/
+      }
 
 
-      {/*-------------FOOD ITEMS-------------*/}
+      {/*-------------FOOD ITEMS-------------*/
+      }
 
       <div className={styles.foodItems}>
+        <div className={styles.infoAboutMenu}>
+          <RxInfoCircled className={styles.infoAboutIcon}/>
+          <div style={{width:"95%", display:"flex", flexDirection:"column"}}>
+            <span style={{fontWeight: "600"}}>Kategoriye Ait Ürünleri girin.</span>
+            <span>Şimdi, her yemek veya içeceği uygun kategoriye atayın. Bunun için öncelikle sol taraftan kategoriyi seçin, sonra yeni ürün eklw butonuyla ürün ekleyebilir, çıkarabilir ve düzenleme ikonlarıyla sırasını değiştirebilirsiniz.</span>
+          </div>
+        </div>
         <div className={styles.foodItem}>
-          <Button onClick={addCategoryInput} className={styles.addCategoryButton}>Ürün Ekle</Button>
+          <div style={{display: "flex", flexDirection: "row"}}>
+            <div className={styles.selectedFoodItem}>Sıcak Başlangıçlar</div>
+            <Button onClick={editFoodItemsModal} className={styles.addFoodItemsButton}>Ürün Ekle</Button>
+          </div>
           {foodItems.map((foodItem, index) => (
-            <Button key={index} onClick={addCategoryInput} className={styles.foodItemsButton}>
+            <div key={index} className={styles.foodItemsButton}>
               <div style={{display: "flex", flexDirection: "row", textAlign: "start", alignItems: "center"}}>
                 <MdDragIndicator className={styles.dragAndDropIcon}/>
                 <Image style={{borderRadius: "5px"}} src={foodItem.image} width={80} height={80}/>
@@ -121,20 +193,22 @@ export default function MenuManage({params}) {
               </div>
               <span>{foodItem.price} TL</span>
               <div className={styles.alignItems}>
-                <AiOutlineEdit className={styles.editIcon}/>
-                <AiOutlineDelete className={styles.deleteIcon}/>
+                <AiOutlineEdit onClick={editFoodItemsModal} className={styles.editIcon}/>
+                <AiOutlineDelete onClick={deleteFoodItemModal} className={styles.deleteIcon}/>
               </div>
-            </Button>
+            </div>
           ))}
         </div>
       </div>
 
-      {/*-------------FOOD ITEMS-------------*/}
+      {/*-------------FOOD ITEMS-------------*/
+      }
 
 
-      {/*------------CATEGORY EDIT MODAL------------*/}
+      {/*------------CATEGORY EDIT MODAL------------*/
+      }
       {
-        editModalIsOpen ? (
+        editCategoriesModalIsOpen ? (
           <div className={styles.editModalContainer}>
             <Input className={styles.categoryInput} placeholder={"Kategori İsmini Giriniz"} label="Kategori İsmi"
                    labelPlacement={"outside"}></Input>
@@ -143,25 +217,185 @@ export default function MenuManage({params}) {
 
 
             <div className={styles.editModalButtons}>
-              <Button onClick={handleEditModal} className={styles.modalCloseButton}>Kapat</Button>
-              <Button onClick={handleEditModal} className={styles.modalSaveButton}>Kaydet</Button>
+              <Button onClick={editCategoriesModal} className={styles.modalCloseButton}>Kapat</Button>
+              <Button onClick={editCategoriesModal} className={styles.modalSaveButton}>Kaydet</Button>
             </div>
 
             {/*Close Modal Button*/}
-            <button onClick={handleEditModal} className={styles.modalCloseIcon}>
+            <button onClick={editCategoriesModal} className={styles.modalCloseIcon}>
               X
             </button>
 
           </div>
         ) : null
       }
+      {/*------------CATEGORY EDIT MODAL------------*/
+      }
 
-      {/*------------CATEGORY EDIT MODAL------------*/}
+      {/*------------FODD ITEM MODAL------------*/
+      }
+      {
+        editFoodItemsModalIsOpen ? (
+          <div className={styles.editFoodItemsModalContainer}>
+            <h1>Ürün Bilgileri</h1>
+
+            <span className={styles.cautionForCustomers}>
+              <BsExclamationCircle className={styles.cautionIcon}/>
+
+              Lütfen menü bilgilerini eksiksiz ve doğru bir şekilde giriniz. Müşterilerinizin menüyü anlaması ve sipariş vermeleri için tüm bilgilerin doğru ve tam olması çok önemlidir.</span>
+            <Input className={styles.foodItemInput} placeholder={"Ürün İsmini Giriniz"} label="Ürün İsmi"
+                   labelPlacement={"outside"}></Input>
+            <Input className={styles.foodItemInput} placeholder={"Ürün Açıklamasını Giriniz"}
+                   label="Ürün Açıklaması" labelPlacement={"outside"}></Input>
+
+            <Input
+              className={styles.foodItemInput}
+              label="Fiyat"
+              placeholder="0.00"
+              labelPlacement="outside"
+              endContent={
+                <div className="flex items-center">
+                  <label className="sr-only" htmlFor="currency">
+                    Currency
+                  </label>
+                  <select
+                    className="outline-none border-0 bg-transparent text-default-400 text-small"
+                    id="currency"
+                    name="currency"
+                  >
+                    <option>TL</option>
+                    <option>TRY</option>
+                    <option>$</option>
+                    <option>₺</option>
+                  </select>
+                </div>
+              }
+              type="number"
+            />
+
+            <Input
+              className={styles.foodItemInput}
+              label="Boyut"
+              placeholder="Ürün Boyut Bilgisini Giriniz"
+              labelPlacement="outside"
+              endContent={
+                <div className="flex items-center">
+                  <label className="sr-only" htmlFor="size">
+                    Currency
+                  </label>
+                  <select
+                    className="outline-none border-0 bg-transparent text-default-400 text-small"
+                    id="currency"
+                    name="currency"
+                  >
+                    <option>Gram</option>
+                    <option>Litre</option>
+                    <option>CC</option>
+                  </select>
+                </div>
+              }
+              type="number"
+            />
+
+            <Input className={styles.foodItemInput} placeholder={"Ürün İçeriğini Giriniz"}
+                   label="Ürün İçeriği" labelPlacement={"outside"}></Input>
+
+            <Input className={styles.foodItemInput} placeholder={"Ürün Kalori Bilgisini Giriniz"} label="Kalori"
+                   labelPlacement={"outside"}></Input>
+
+            <Input className={styles.foodItemInput} placeholder={"Hazırlanma Süresini Giriniz"}
+                   label="Hazırlanma Süresi"
+                   labelPlacement={"outside"}></Input>
+
+            <RadioGroup
+              className={styles.foodItemRadioGroup}
+              color="primary"
+              defaultValue="Aktif"
+              size={"sm"}
+              label="Durum"
+            >
+              <Radio value="active">Aktif</Radio>
+              <Radio value="passive">Pasif</Radio>
+              <Radio value="no-stock">Stokta Kalmadı</Radio>
+            </RadioGroup>
+
+            <Input className={styles.foodItemInput} style={{cursor: "pointer"}} type={"file"}></Input>
 
 
-      <div onClick={handleEditModal}
-           className={`${styles.overlay} ${editModalIsOpen ? styles.overlay : styles.inactive}`}></div>
+            <div className={styles.editModalButtons}>
+              <Button onClick={editFoodItemsModal} className={styles.modalCloseButton}>Kapat</Button>
+              <Button onClick={editFoodItemsModal} className={styles.modalSaveButton}>Kaydet</Button>
+            </div>
+
+            {/*Close Modal Button*/}
+            <button onClick={editFoodItemsModal} className={styles.modalCloseIcon}>
+              X
+            </button>
+
+          </div>
+        ) : null
+      }
+      {/*------------FODD ITEM MODAL------------*/
+      }
+
+
+      {/*------------FODD ITEM CLEAR MODAL------------*/
+      }
+      {
+        deleteFoodItemModalIsOpen ? (
+          <div className={styles.deleteFoodItemsModalContainer}>
+            <span>Ürünü silmek üzeresiniz. Onaylıyor musunuz?</span>
+            <div className={styles.clearFoodItemsButtons}>
+              <Button onClick={deleteFoodItemModal} className={styles.modalCloseButton}>Kapat</Button>
+              <Button onClick={deleteFoodItemModal} className={styles.modalSaveButton}>Onayla</Button>
+            </div>
+            {/*Close Modal Button*/}
+            <button onClick={deleteFoodItemModal} className={styles.modalCloseIcon}>
+              X
+            </button>
+          </div>
+        ) : null
+      }
+
+      {/*------------FODD ITEM CLEAR MODAL------------*/
+      }
+
+
+      {/*------------CATEGORIES CLEAR MODAL------------*/
+      }
+      {
+        deleteCategoryModalIsOpen ? (
+          <div className={styles.deleteFoodItemsModalContainer}>
+            <span>Kategoriyi silmek üzeresiniz. Onaylıyor musunuz?</span>
+            <div className={styles.clearCategoriesButtons}>
+              <Button onClick={deleteCategoryModal} className={styles.modalCloseButton}>Kapat</Button>
+              <Button onClick={deleteCategoryModal} className={styles.modalSaveButton}>Onayla</Button>
+            </div>
+            {/*Close Modal Button*/}
+            <button onClick={deleteCategoryModal} className={styles.modalCloseIcon}>
+              X
+            </button>
+          </div>
+        ) : null
+      }
+
+      {/*------------CATEGORIES CLEAR MODAL------------*/
+      }
+
+
+      <div onClick={editFoodItemsModal}
+           className={`${styles.overlay} ${editFoodItemsModalIsOpen ? styles.overlay : styles.inactive}`}></div>
+
+      <div onClick={editCategoriesModal}
+           className={`${styles.overlay} ${editCategoriesModalIsOpen ? styles.overlay : styles.inactive}`}></div>
+
+      <div onClick={deleteFoodItemModal}
+           className={`${styles.overlay} ${deleteFoodItemModalIsOpen ? styles.overlay : styles.inactive}`}></div>
+
+      <div onClick={deleteCategoryModal}
+           className={`${styles.overlay} ${deleteCategoryModalIsOpen ? styles.overlay : styles.inactive}`}></div>
 
     </div>
-  );
+  )
+    ;
 }
