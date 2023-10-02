@@ -1,3 +1,7 @@
+.container{
+    padding: 30px;
+}
+
 .cardContainer {
     width: 100%;
     display: flex;
@@ -6,7 +10,7 @@
     height: 100%;
     border-radius: 10px;
     cursor: pointer;
-    padding: 50px;
+    padding: 30px;
 }
 
 .pageHeader {
@@ -51,8 +55,12 @@
 
 .cardIcon {
     margin-right: 20px;
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 60px;
+    background-color: #f4f4f5;
+    color: #181818;
+    padding: 0 4px 0 4px;
+    border-radius: 5px;
 }
 
 .cardHeader h1 {
@@ -164,46 +172,67 @@
 /*    margin-right: 0px;*/
 /*}*/
 
-.pageIcon{
+.pageIcon {
     width: 20px;
     height: 20px;
     margin-right: 10px;
 }
 
 
-.inputSaveButton{
+.inputSaveButton {
     background-color: #202854;
     color: white;
     font-weight: 200;
-    padding: 5px 10px 5px 10px;
+    padding: 8px 20px 8px 20px;
     border-radius: 10px;
-    /*margin-top: 20px;*/
     align-items: center;
     display: flex;
     margin-left: auto;
-    font-size: 14px;
+    font-size: 16px;
 }
 
-.inputCloseButton{
-    background-color: #9a9a9a;
-    color: #ffffff;
-    padding: 5px 10px 5px 10px;
+.inputCloseButton {
+    background-color: #ffffff;
+    color: #000000;
     border-radius: 10px;
     align-items: center;
     display: flex;
-    font-size: 14px;
-    font-weight: 200;
+    font-size: 16px;
+    font-weight: 400;
+    border: 1px solid black;
+    padding: 8px 20px 8px 20px;
 }
 
-.formButtons{
+.formButtons {
     display: flex;
     justify-content: space-between;
-    width: 150px;
+    width: 220px;
     margin-left: auto;
     margin-top: 50px;
 }
 
-.restaurantTitle{
+.restaurantTitle {
     font-size: 18px;
     font-weight: 500;
+}
+
+.editRestaurantInfo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00357391;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    width: 100%;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+
+.infoAboutIcon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
 }
