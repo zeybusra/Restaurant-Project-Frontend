@@ -12,11 +12,6 @@ import restaurantImage8 from '/components/image/restaurant-image-11.jpeg';
 import restaurantImage9 from '/components/image/restaurant-image-12.jpeg';
 import restaurantImage10 from '/components/image/restaurant-image-13.jpeg';
 import styles from './styles.module.css';
-// import Box from '@mui/material/Box';
-// import TextField from '@mui/material/TextField';
-// import Autocomplete from '@mui/material/Autocomplete';
-// import Button from '@mui/material/Button';
-// import Stack from '@mui/material/Stack';
 import Link from 'next/link';
 import {
   PiFacebookLogoLight,
@@ -62,9 +57,9 @@ export default function Restaurant({ params }) {
             <span className={styles.subTitle}>The Best Experience</span>
           </h1>
 
-          <Button className={styles.reservationButton} variant="bordered">
-            MAKE A RESERVATION
-          </Button>
+          {/*<Button className={styles.reservationButton} variant="bordered">*/}
+          {/*  MAKE A RESERVATION*/}
+          {/*</Button>*/}
         </div>
       </div>
 
