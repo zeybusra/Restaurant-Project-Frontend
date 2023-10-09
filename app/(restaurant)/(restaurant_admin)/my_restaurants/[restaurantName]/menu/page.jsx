@@ -10,6 +10,8 @@ import {Button, Input} from "@nextui-org/react";
 import foodImage from '/components/image/french-fries.jpeg';
 import {RadioGroup, Radio} from "@nextui-org/react";
 import {RxInfoCircled} from "react-icons/rx";
+import PageSpinner from "/components/spinner";
+import LoadingButton from "../../../../../../components/loading-button";
 
 export default function MenuManage({params}) {
   const [editCategoriesModalIsOpen, setCategoriesEditModalIsOpen] = React.useState(false);
@@ -17,6 +19,12 @@ export default function MenuManage({params}) {
   const [deleteCategoryModalIsOpen, setDeleteCategoryModalIsOpen] = React.useState(false);
   const [deleteFoodItemModalIsOpen, setDeleteFoodItemModalIsOpen] = React.useState(false);
   const [isCategorySelected, setIsCategorySelected] = React.useState(false);
+  const [saveButtonLoading, setSaveButtonLoading] = React.useState(false);
+
+
+  const saveProfile = () => {
+    setSaveButtonLoading(true);
+  }
 
   const selectCategory = (e) => {
     setIsCategorySelected(!isCategorySelected);
@@ -53,6 +61,8 @@ export default function MenuManage({params}) {
 
   const editCategoriesModal = (e) => {
     setCategoriesEditModalIsOpen(!editCategoriesModalIsOpen);
+    console.log(11)
+    console.log('saveButtonLoading',saveButtonLoading)
     if (editCategoriesModalIsOpen) {
       document.body.style.overflowY = 'scroll';
     } else {
@@ -141,13 +151,13 @@ export default function MenuManage({params}) {
 
         <div className={styles.infoAboutMenu}>
           <RxInfoCircled className={styles.infoAboutIcon}/>
-          <div style={{width:"95%", display:"flex", flexDirection:"column"}}>
+          <div style={{width: "95%", display: "flex", flexDirection: "column"}}>
             <span style={{fontWeight: "600"}}>Kategorileri Tanımlayın: </span>
             <span>Ana kategorilerinizi belirleyin.Örneğin, "Başlangıçlar," "Ana Yemekler," "Tatlılar," gibi kategoriler oluşturabilirsiniz.</span>
           </div>
         </div>
 
-        <Button  onClick={editCategoriesModal} className={styles.addCategoryButton}>Yeni Kategori Ekle</Button>
+        <Button onClick={editCategoriesModal} className={styles.addCategoryButton}>Yeni Kategori Ekle</Button>
         {categories.map((category, index) => (
           <div onClick={selectCategory} key={index} className={styles.categoryButton}>
             <div className={styles.alignItems}>
@@ -171,7 +181,7 @@ export default function MenuManage({params}) {
       <div className={styles.foodItems}>
         <div className={styles.infoAboutMenu}>
           <RxInfoCircled className={styles.infoAboutIcon}/>
-          <div style={{width:"95%", display:"flex", flexDirection:"column"}}>
+          <div style={{width: "95%", display: "flex", flexDirection: "column"}}>
             <span style={{fontWeight: "600"}}>Kategoriye Ait Ürünleri girin.</span>
             <span>Şimdi, her yemek veya içeceği uygun kategoriye atayın. Bunun için öncelikle sol taraftan kategoriyi seçin, sonra yeni ürün eklw butonuyla ürün ekleyebilir, çıkarabilir ve düzenleme ikonlarıyla sırasını değiştirebilirsiniz.</span>
           </div>
@@ -217,8 +227,22 @@ export default function MenuManage({params}) {
 
 
             <div className={styles.editModalButtons}>
-              <Button onClick={editCategoriesModal} className={styles.modalCloseButton}>Kapat</Button>
-              <Button onClick={editCategoriesModal} className={styles.modalSaveButton}>Kaydet</Button>
+
+              {saveButtonLoading ?
+                (
+                  <div style={{display: "flex", width: "100%", justifyContent: "space-between"}}>
+                    <Button isDisabled="true" onClick={editCategoriesModal}
+                            className={styles.modalCloseButton}>Kapat</Button>
+                    <LoadingButton onClick={editCategoriesModal}
+                                   className={styles.modalSaveButton}>Kaydet</LoadingButton>
+                  </div>
+                ) : (
+                  <div style={{display: "flex", width: "100%", justifyContent: "space-between"}}>
+                    <Button onClick={editCategoriesModal} className={styles.modalCloseButton}>Kapat</Button>
+                    <Button onClick={editCategoriesModal} className={styles.modalSaveButton}>Kaydet</Button>
+                  </div>
+                )
+              }
             </div>
 
             {/*Close Modal Button*/}
