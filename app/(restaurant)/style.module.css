@@ -41,7 +41,9 @@
 
 .navbarRightContainer {
     display: flex;
-    width: 150px;
+    width: 220px;
+    justify-content: center;
+    align-items: center;
 }
 
 .navbarRightImg {
@@ -84,6 +86,7 @@
     display: flex;
     width: 30%;
     align-items: center;
+    justify-content: center;
 }
 
 .headerContainer {

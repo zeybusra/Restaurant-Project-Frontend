@@ -10,10 +10,10 @@ import {IoIosNotificationsOutline} from 'react-icons/io';
 import {PiMoonLight} from 'react-icons/pi';
 import profilePic from '/components/image/profile-picture-1.png';
 import {usePathname} from "next/navigation";
+import {Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger} from "@nextui-org/react";
 
 export default function RestaurantLayout({children}) {
 
-  console.log('-'.repeat(10));
   const path = usePathname()
   const lastPath = path.split('my_restaurants')[1];
   let sidebarType;
@@ -22,7 +22,6 @@ export default function RestaurantLayout({children}) {
   } else {
     sidebarType = '1';
   }
-  console.log('sidebarType', sidebarType);
 
   return (
     <div className={styles.gridTemplate}>
@@ -41,22 +40,63 @@ export default function RestaurantLayout({children}) {
         </div>
 
         <div className={styles.navbarRightContainer}>
-          <div className={styles.navbarRight}>
-            <IoIosNotificationsOutline className={styles.navbarRightImg}/>
-          </div>
+          {/*<div className={styles.navbarRight}>*/}
+          {/*  <IoIosNotificationsOutline className={styles.navbarRightImg}/>*/}
+          {/*</div>*/}
+
+          <Dropdown>
+            <DropdownTrigger>
+              <Button
+                variant="text"
+              >
+                <IoIosNotificationsOutline className={styles.navbarRightImg}/>
+              </Button>
+
+              {/*<div className={styles.navbarRight}>*/}
+              {/*  <IoIosNotificationsOutline className={styles.navbarRightImg}/>*/}
+              {/*</div>*/}
+
+            </DropdownTrigger>
+            <DropdownMenu aria-label="Static Actions">
+              <DropdownItem key="new">New file</DropdownItem>
+              <DropdownItem key="copy">Copy link</DropdownItem>
+              <DropdownItem key="edit">Edit file</DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+
 
           <div className={styles.navbarRight}>
             <PiMoonLight className={styles.navbarRightImg}/>
           </div>
 
           <div className={styles.navbarRight}>
-            <Image
-              className={styles.profileImage}
-              src={profilePic}
-              width={40}
-              height={40}
-              alt={'Picture of the author'}
-            />
+
+
+            <Dropdown>
+              <DropdownTrigger>
+                <Button
+                  variant="text"
+                >
+                  <Image
+                    className={styles.profileImage}
+                    src={profilePic}
+                    width={40}
+                    height={40}
+                    alt={'Picture of the author'}
+                  />
+                </Button>
+
+              </DropdownTrigger>
+              <DropdownMenu aria-label="Static Actions">
+                <DropdownItem key="new">Profili Düzenle</DropdownItem>
+                <DropdownItem key="new">Profili Düzenle</DropdownItem>
+                <DropdownItem key="edit" className="text-primary" color="primary" >
+                  Çıkış Yap
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+
+
           </div>
         </div>
       </div>
