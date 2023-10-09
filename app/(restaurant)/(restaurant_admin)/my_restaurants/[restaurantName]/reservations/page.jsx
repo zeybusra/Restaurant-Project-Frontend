@@ -7,8 +7,7 @@ export default function Reservations({params}) {
 
   return (
     <div className={'container'}>
-
-
+      <div>Bu alan yapım aşamasındadır.</div>
     </div>
   );
 }
