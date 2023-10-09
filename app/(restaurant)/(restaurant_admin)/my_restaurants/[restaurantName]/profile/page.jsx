@@ -10,12 +10,20 @@ import {RxInfoCircled} from "react-icons/rx";
 import restaurantImage1 from '/components/image/restaurant-logo-kirpi.png';
 import {Input} from '@nextui-org/react';
 import Link from "next/link";
+import LoadingButton from "/components/loading-button";
+import {Button} from "@nextui-org/react";
 
 export default function Profile({params}) {
+
+  const [saveButtonLoading, setSaveButtonLoading] = React.useState(false);
 
   function uploadToClient(event) {
     console.log("uploadToClient");
     console.log(event.target.files[0]);
+  }
+
+  const saveProfile = () => {
+    setSaveButtonLoading(true);
   }
 
   return (
@@ -37,58 +45,92 @@ export default function Profile({params}) {
           <div style={{marginTop: "30px"}}>
 
             <div style={{display: "flex", flexDirection: "row", alignItems: "center", marginBottom: "35px"}}>
-              <Input placeholder={"Restaurant ismini giriniz..."} label="Restaurant İsmi" value={"KİRPİ / SUADİYE"} labelPlacement={"outside"} size={`lg`}/>
+              <Input placeholder={"Restaurant ismini giriniz..."} label="Restaurant İsmi" value={"KİRPİ / SUADİYE"}
+                     labelPlacement={"outside"} size={`lg`}/>
 
             </div>
 
             <div style={{display: "flex", flexDirection: "row", alignItems: "center", marginBottom: "35px"}}>
               {/*<MdOutlineAddAPhoto className={styles.cardIcon}/>*/}
-              <Input type={"file"} placeholder={"Profil resmi seçiniz..."} label={"Logo"} labelPlacement={"outside"}  size={`lg`}/>
+              <Input type={"file"} placeholder={"Profil resmi seçiniz..."} label={"Logo"} labelPlacement={"outside"}
+                     size={`lg`}/>
             </div>
 
-            <div style={{display: "flex", flexDirection: "row", alignItems: "center", justifyContent:"space-between", marginBottom:"35px"}}>
-              <div style={{width:"45%"}}>
+            <div style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+              marginBottom: "35px"
+            }}>
+              <div style={{width: "45%"}}>
                 {/*<PiPhoneCallLight className={styles.cardIcon}/>*/}
-                <Input placeholder={"Adres bilgilerini giriniz..."} label="Adres" labelPlacement={"outside"}  size={`lg`}/>
+                <Input placeholder={"Adres bilgilerini giriniz..."} label="Adres" labelPlacement={"outside"}
+                       size={`lg`}/>
               </div>
 
-              <div style={{width:"45%"}}>
-                <Input placeholder={"Wifi Şifresini giriniz..."} label="Wifi Şifresi" labelPlacement={"outside"}  size={`lg`}/>
+              <div style={{width: "45%"}}>
+                <Input placeholder={"Wifi Şifresini giriniz..."} label="Wifi Şifresi" labelPlacement={"outside"}
+                       size={`lg`}/>
               </div>
             </div>
 
-            <div style={{display: "flex", flexDirection: "row", alignItems: "center", justifyContent:"space-between", marginBottom:"35px"} }>
-              <div style={{width:"45%"}}>
+            <div style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+              marginBottom: "35px"
+            }}>
+              <div style={{width: "45%"}}>
                 {/*<PiPhoneCallLight className={styles.cardIcon}/>*/}
                 <Input className={styles.foodItemInput} placeholder={"Telefon bilgilerini giriniz..."}
-                       label="Telefon" labelPlacement={"outside"}  size={`lg`}></Input>
+                       label="Telefon" labelPlacement={"outside"} size={`lg`}></Input>
               </div>
 
-              <div style={{width:"45%"}}>
+              <div style={{width: "45%"}}>
                 {/*<CiMail className={styles.cardIcon}/>*/}
                 <Input className={styles.foodItemInput} placeholder={"Mail bilgilerini giriniz..."}
-                       label="Mail" labelPlacement={"outside"}  size={`lg`}></Input>
+                       label="Mail" labelPlacement={"outside"} size={`lg`}></Input>
               </div>
             </div>
 
 
-
-            <div style={{display: "flex", flexDirection: "row", alignItems: "center", justifyContent:"space-between", marginBottom:"35px"}}>
-              <div style={{width:"45%"}}>
+            <div style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+              marginBottom: "35px"
+            }}>
+              <div style={{width: "45%"}}>
                 <Input className={styles.foodItemInput} placeholder={"link veya kullanıcı bilgisi giriniz..."}
                        label="Instagram" labelPlacement={"outside"} size={`lg`}></Input>
               </div>
 
-              <div style={{width:"45%"}}>
+              <div style={{width: "45%"}}>
                 <Input className={styles.foodItemInput} placeholder={"link veya kullanıcı bilgisi giriniz..."}
                        label="Facebook" labelPlacement={"outside"} size={`lg`}></Input>
               </div>
             </div>
 
+
             <div className={styles.formButtons}>
               {/*<Link href={} placeholder={ "Kaydet"}/>Kapat>*/}
-              <button className={styles.inputCloseButton}>Kapat</button>
-              <button className={styles.inputSaveButton}>Kaydet</button>
+
+              {saveButtonLoading ?
+                (
+                  <div style={{display:"flex", width:"100%", justifyContent:"space-between"}}>
+                    <Button isDisabled="true" className={styles.inputCloseButton}>Kapat</Button>
+                    <LoadingButton className={styles.inputSaveButton}>Kaydet</LoadingButton>
+                  </div>
+                ) : (
+                  <div style={{display:"flex", width:"100%", justifyContent:"space-between"}}>
+                    <Button className={styles.inputCloseButton}>Kapat</Button>
+                    <Button onClick={saveProfile} className={styles.inputSaveButton}>Kaydet</Button>
+                  </div>
+                )
+              }
             </div>
           </div>
         </div>
