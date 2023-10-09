@@ -1,0 +1,26 @@
+.gridContainer{
+    padding: 0 20px 0 20px;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: auto auto auto;
+    margin-top: 20px;
+}
+
+.container{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.gridContainer2{
+    padding: 0 20px 0 20px;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: auto auto;
+    margin-top: 20px;
+}
+
+.container div{
+    font-weight: 600;
+    margin-bottom: 5px;
+}
