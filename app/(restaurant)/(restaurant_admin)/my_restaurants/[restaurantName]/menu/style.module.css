@@ -58,10 +58,11 @@
     padding: 0 20px 0 20px;
     display: grid;
     gap: 30px;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: auto;
     grid-template-areas:
         "menuHeader menuHeader"
-        "categories foodItems";
+        "categories categories"
+        "foodItems foodItems";
 }
 
 .menuCategories {
@@ -190,10 +191,8 @@
 }
 
 .modalSaveButton {
-
     background-color: #202854;
     color: white;
-    border-radius: 5px;
     cursor: pointer;
 }
 
@@ -201,7 +200,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 180px;
+    width: 40%;
     margin-left: auto;
 }
 
@@ -339,7 +338,7 @@
     font-weight: 200;
 }
 
-.infoAboutMenu{
+.infoAboutMenu {
     background-color: #00357391;
     padding: 10px;
     border-radius: 10px;
@@ -351,9 +350,20 @@
     margin-bottom: 20px;
 }
 
-.infoAboutIcon{
+.infoAboutIcon {
     width: 25px;
     height: 25px;
     margin-right: 10px;
     margin-left: 10px;
+}
+
+.alignSpinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    position: absolute;
+    top: 40%;
+    left: 55%;
 }

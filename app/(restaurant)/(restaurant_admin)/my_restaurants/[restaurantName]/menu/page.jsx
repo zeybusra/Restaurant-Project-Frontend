@@ -1,17 +1,16 @@
 'use client';
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './style.module.css';
 import Image from 'next/image';
 import {AiOutlineEdit} from "react-icons/ai";
 import {AiOutlineDelete} from "react-icons/ai";
 import {MdDragIndicator} from "react-icons/md";
 import {BsExclamationCircle} from "react-icons/bs";
-import {Button, Input} from "@nextui-org/react";
+import {Button, Input, Spinner} from "@nextui-org/react";
 import foodImage from '/components/image/french-fries.jpeg';
 import {RadioGroup, Radio} from "@nextui-org/react";
 import {RxInfoCircled} from "react-icons/rx";
-import PageSpinner from "/components/spinner";
-import LoadingButton from "../../../../../../components/loading-button";
+import LoadingButton from "/components/loading-button";
 
 export default function MenuManage({params}) {
   const [editCategoriesModalIsOpen, setCategoriesEditModalIsOpen] = React.useState(false);
@@ -20,11 +19,59 @@ export default function MenuManage({params}) {
   const [deleteFoodItemModalIsOpen, setDeleteFoodItemModalIsOpen] = React.useState(false);
   const [isCategorySelected, setIsCategorySelected] = React.useState(false);
   const [saveButtonLoading, setSaveButtonLoading] = React.useState(false);
+  const [menuInfo, setMenuInfo] = React.useState(false);
+  const [foodItemsInfo, setFoodItemsInfo] = React.useState(false);
 
 
   const saveProfile = () => {
     setSaveButtonLoading(true);
   }
+
+  useEffect(() => {
+    fetch('https://fakerestapi.azurewebsites.net/api/v1/CoverPhotos')
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setMenuInfo({
+          name: ['Sıcak Başlangıçlar', 'Soğuk Başlangıçlar', 'Salatalar', 'İçecekler', 'Tatlılar', 'Ana Yemekler'],
+        })
+
+        setFoodItemsInfo([
+          {
+            name: 'Köfte',
+            image: foodImage,
+            price: '25',
+            description: 'lorem ipsum dolor sit amet, consectetur'
+          },
+          {
+            name: 'Patates Kızarması',
+            image: foodImage,
+            price: '15',
+            description: 'lorem ipsum dolor sit amet, consectetur'
+          },
+          {
+            name: 'Bademli Bulgur Pilavı',
+            image: foodImage,
+            price: '10',
+            description: 'lorem ipsum dolor sit amet, consectetur'
+          },
+          {
+            name: 'Çorba',
+            image: foodImage,
+            price: '10',
+            description: 'lorem ipsum dolor sit amet, consectetur'
+          },
+          {
+            name: 'Supangle',
+            image: foodImage,
+            price: '10',
+            description: 'lorem ipsum dolor sit amet, consectetur'
+          }
+        ]);
+
+
+      });
+  }, []);
 
   const selectCategory = (e) => {
     setIsCategorySelected(!isCategorySelected);
@@ -60,9 +107,10 @@ export default function MenuManage({params}) {
   }
 
   const editCategoriesModal = (e) => {
+
     setCategoriesEditModalIsOpen(!editCategoriesModalIsOpen);
     console.log(11)
-    console.log('saveButtonLoading',saveButtonLoading)
+    console.log('saveButtonLoading', saveButtonLoading)
     if (editCategoriesModalIsOpen) {
       document.body.style.overflowY = 'scroll';
     } else {
@@ -84,60 +132,6 @@ export default function MenuManage({params}) {
     console.log('addCategoryInput');
   }
 
-  const categories = [
-    {
-      name: 'Sıcak Başlangıçlar',
-    },
-    {
-      name: 'Soğuk Başlangıçlar',
-    },
-    {
-      name: 'Salatalar',
-    },
-    {
-      name: 'İçecekler',
-    },
-    {
-      name: 'Tatlılar',
-    },
-    {
-      name: 'Ana Yemekler',
-    }
-  ];
-
-  const foodItems = [
-    {
-      name: 'Köfte',
-      image: foodImage,
-      price: '25',
-      description: 'lorem ipsum dolor sit amet, consectetur'
-    },
-    {
-      name: 'Patates Kızarması',
-      image: foodImage,
-      price: '15',
-      description: 'lorem ipsum dolor sit amet, consectetur'
-    },
-    {
-      name: 'Bademli Bulgur Pilavı',
-      image: foodImage,
-      price: '10',
-      description: 'lorem ipsum dolor sit amet, consectetur'
-    },
-    {
-      name: 'Çorba',
-      image: foodImage,
-      price: '10',
-      description: 'lorem ipsum dolor sit amet, consectetur'
-    },
-    {
-      name: 'Supangle',
-      image: foodImage,
-      price: '10',
-      description: 'lorem ipsum dolor sit amet, consectetur'
-    }
-  ];
-
 
   return (
     <div className={styles.menuGridContainer}>
@@ -145,113 +139,122 @@ export default function MenuManage({params}) {
         <span>Menünüzü daha düzenli hale getirmek için ana kategoriler eklemek büyük bir adımdır. İşte nasıl başlayabileceğiniz:</span>
       </div>
 
-      {/*-------------CATEGORIES-------------*/
-      }
-      <div className={styles.menuCategories}>
+      {menuInfo ? (
+        <div style={{display: "flex"}}>
 
-        <div className={styles.infoAboutMenu}>
-          <RxInfoCircled className={styles.infoAboutIcon}/>
-          <div style={{width: "95%", display: "flex", flexDirection: "column"}}>
-            <span style={{fontWeight: "600"}}>Kategorileri Tanımlayın: </span>
-            <span>Ana kategorilerinizi belirleyin.Örneğin, "Başlangıçlar," "Ana Yemekler," "Tatlılar," gibi kategoriler oluşturabilirsiniz.</span>
-          </div>
-        </div>
+          {/*-------------CATEGORIES-------------*/}
+          <div className={styles.menuCategories}>
 
-        <Button onClick={editCategoriesModal} className={styles.addCategoryButton}>Yeni Kategori Ekle</Button>
-        {categories.map((category, index) => (
-          <div onClick={selectCategory} key={index} className={styles.categoryButton}>
-            <div className={styles.alignItems}>
-              <MdDragIndicator className={styles.dragAndDropIcon}/>
-              <span>{category.name}</span>
-            </div>
-            <div className={styles.alignItems}>
-              <AiOutlineEdit onClick={editCategoriesModal} className={styles.editIcon}/>
-              <AiOutlineDelete onClick={deleteCategoryModal} className={styles.deleteIcon}/>
-            </div>
-          </div>
-        ))}
-      </div>
-      {/*-------------CATEGORIES-------------*/
-      }
-
-
-      {/*-------------FOOD ITEMS-------------*/
-      }
-
-      <div className={styles.foodItems}>
-        <div className={styles.infoAboutMenu}>
-          <RxInfoCircled className={styles.infoAboutIcon}/>
-          <div style={{width: "95%", display: "flex", flexDirection: "column"}}>
-            <span style={{fontWeight: "600"}}>Kategoriye Ait Ürünleri girin.</span>
-            <span>Şimdi, her yemek veya içeceği uygun kategoriye atayın. Bunun için öncelikle sol taraftan kategoriyi seçin, sonra yeni ürün eklw butonuyla ürün ekleyebilir, çıkarabilir ve düzenleme ikonlarıyla sırasını değiştirebilirsiniz.</span>
-          </div>
-        </div>
-        <div className={styles.foodItem}>
-          <div style={{display: "flex", flexDirection: "row"}}>
-            <div className={styles.selectedFoodItem}>Sıcak Başlangıçlar</div>
-            <Button onClick={editFoodItemsModal} className={styles.addFoodItemsButton}>Ürün Ekle</Button>
-          </div>
-          {foodItems.map((foodItem, index) => (
-            <div key={index} className={styles.foodItemsButton}>
-              <div style={{display: "flex", flexDirection: "row", textAlign: "start", alignItems: "center"}}>
-                <MdDragIndicator className={styles.dragAndDropIcon}/>
-                <Image style={{borderRadius: "5px"}} src={foodItem.image} width={80} height={80}/>
-              </div>
-              <div style={{display: "flex", flexDirection: "column", textAlign: "start"}}>
-                <span>{foodItem.name}</span>
-                <span>{foodItem.description}</span>
-              </div>
-              <span>{foodItem.price} TL</span>
-              <div className={styles.alignItems}>
-                <AiOutlineEdit onClick={editFoodItemsModal} className={styles.editIcon}/>
-                <AiOutlineDelete onClick={deleteFoodItemModal} className={styles.deleteIcon}/>
+            <div className={styles.infoAboutMenu}>
+              <RxInfoCircled className={styles.infoAboutIcon}/>
+              <div style={{width: "95%", display: "flex", flexDirection: "column"}}>
+                <span style={{fontWeight: "600"}}>Kategorileri Tanımlayın: </span>
+                <span>Ana kategorilerinizi belirleyin.Örneğin, "Başlangıçlar," "Ana Yemekler," "Tatlılar," gibi kategoriler oluşturabilirsiniz.</span>
               </div>
             </div>
-          ))}
-        </div>
-      </div>
 
-      {/*-------------FOOD ITEMS-------------*/
-      }
+            <Button onClick={editCategoriesModal} className={styles.addCategoryButton}>Yeni Kategori Ekle</Button>
+            {menuInfo.name.map((categoryItem, index) => (
+              <div onClick={selectCategory} key={index} className={styles.categoryButton}>
+                <div className={styles.alignItems}>
+                  <MdDragIndicator className={styles.dragAndDropIcon}/>
+                  <span>{categoryItem}</span>
+                </div>
+                <div className={styles.alignItems}>
+                  <AiOutlineEdit onClick={editCategoriesModal} className={styles.editIcon}/>
+                  <AiOutlineDelete onClick={deleteCategoryModal} className={styles.deleteIcon}/>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/*-------------CATEGORIES-------------*/}
 
 
-      {/*------------CATEGORY EDIT MODAL------------*/
-      }
-      {
-        editCategoriesModalIsOpen ? (
-          <div className={styles.editModalContainer}>
-            <Input className={styles.categoryInput} placeholder={"Kategori İsmini Giriniz"} label="Kategori İsmi"
-                   labelPlacement={"outside"}></Input>
-            <Input className={styles.categoryInput} placeholder={"Kategori Açıklamasını Giriniz"}
-                   label="Kategori Açıklaması" labelPlacement={"outside"}></Input>
+          {/*-------------FOOD ITEMS-------------*/
+          }
 
-
-            <div className={styles.editModalButtons}>
-
-              {saveButtonLoading ?
-                (
-                  <div style={{display: "flex", width: "100%", justifyContent: "space-between"}}>
-                    <Button isDisabled="true" onClick={editCategoriesModal}
-                            className={styles.modalCloseButton}>Kapat</Button>
-                    <LoadingButton onClick={editCategoriesModal}
-                                   className={styles.modalSaveButton}>Kaydet</LoadingButton>
+          <div className={styles.foodItems}>
+            <div className={styles.infoAboutMenu}>
+              <RxInfoCircled className={styles.infoAboutIcon}/>
+              <div style={{width: "95%", display: "flex", flexDirection: "column"}}>
+                <span style={{fontWeight: "600"}}>Kategoriye Ait Ürünleri girin.</span>
+                <span>Şimdi, her yemek veya içeceği uygun kategoriye atayın. Bunun için öncelikle sol taraftan kategoriyi seçin, sonra yeni ürün ekle butonuyla ürün ekleyebilir, çıkarabilir ve düzenleme ikonlarıyla sırasını değiştirebilirsiniz.</span>
+              </div>
+            </div>
+            <div className={styles.foodItem}>
+              <div style={{display: "flex", flexDirection: "row"}}>
+                <div className={styles.selectedFoodItem}>Sıcak Başlangıçlar</div>
+                <Button onClick={editFoodItemsModal} className={styles.addFoodItemsButton}>Ürün Ekle</Button>
+              </div>
+              {foodItemsInfo.map((foodItem, index) => (
+                <div key={index} className={styles.foodItemsButton}>
+                  <div style={{display: "flex", flexDirection: "row", textAlign: "start", alignItems: "center"}}>
+                    <MdDragIndicator className={styles.dragAndDropIcon}/>
+                    <Image style={{borderRadius: "5px"}} src={foodItem.image} width={80} height={80}/>
                   </div>
-                ) : (
-                  <div style={{display: "flex", width: "100%", justifyContent: "space-between"}}>
-                    <Button onClick={editCategoriesModal} className={styles.modalCloseButton}>Kapat</Button>
-                    <Button onClick={editCategoriesModal} className={styles.modalSaveButton}>Kaydet</Button>
+                  <div style={{display: "flex", flexDirection: "column", textAlign: "start"}}>
+                    <span>{foodItem.name}</span>
+                    <span>{foodItem.description}</span>
                   </div>
-                )
-              }
+                  <span>{foodItem.price} TL</span>
+                  <div className={styles.alignItems}>
+                    <AiOutlineEdit onClick={editFoodItemsModal} className={styles.editIcon}/>
+                    <AiOutlineDelete onClick={deleteFoodItemModal} className={styles.deleteIcon}/>
+                  </div>
+                </div>
+              ))}
             </div>
-
-            {/*Close Modal Button*/}
-            <button onClick={editCategoriesModal} className={styles.modalCloseIcon}>
-              X
-            </button>
-
           </div>
-        ) : null
+
+
+
+        </div>
+        ) : (
+
+
+        <div className={styles.alignSpinner}>
+          <Spinner color="secondary" size="lg"/>
+        </div>
+      )}
+
+      {/*-------------FOOD ITEMS-------------*/}
+
+
+      {/*------------CATEGORY EDIT MODAL------------*/}
+
+      {editCategoriesModalIsOpen ? (
+        <div className={styles.editModalContainer}>
+          <Input className={styles.categoryInput} placeholder={"Kategori İsmini Giriniz"} label="Kategori İsmi"
+                 labelPlacement={"outside"}></Input>
+          <Input className={styles.categoryInput} placeholder={"Kategori Açıklamasını Giriniz"}
+                 label="Kategori Açıklaması" labelPlacement={"outside"}></Input>
+
+
+          <div className={styles.editModalButtons}>
+
+            {saveButtonLoading ?
+              (
+                <div style={{display: "flex", width: "100%", justifyContent: "space-between"}}>
+                  <Button isDisabled="true" className={styles.modalCloseButton}>Kapat</Button>
+                  <LoadingButton  className={styles.modalSaveButton}>Kaydet</LoadingButton>
+                </div>
+              ) : (
+                <div style={{display: "flex", width: "100%", justifyContent: "space-between"}}>
+                  <Button className={styles.modalCloseButton}>Kapat</Button>
+                  <Button className={styles.modalSaveButton}>Kaydet</Button>
+                </div>
+              )
+            }
+          </div>
+
+          {/*Close Modal Button*/}
+          <button onClick={editCategoriesModal} className={styles.modalCloseIcon}>
+            X
+          </button>
+
+        </div>
+      ) : null
       }
       {/*------------CATEGORY EDIT MODAL------------*/
       }
@@ -264,9 +267,9 @@ export default function MenuManage({params}) {
             <h1>Ürün Bilgileri</h1>
 
             <span className={styles.cautionForCustomers}>
-              <BsExclamationCircle className={styles.cautionIcon}/>
+        <BsExclamationCircle className={styles.cautionIcon}/>
 
-              Lütfen menü bilgilerini eksiksiz ve doğru bir şekilde giriniz. Müşterilerinizin menüyü anlaması ve sipariş vermeleri için tüm bilgilerin doğru ve tam olması çok önemlidir.</span>
+        Lütfen menü bilgilerini eksiksiz ve doğru bir şekilde giriniz. Müşterilerinizin menüyü anlaması ve sipariş vermeleri için tüm bilgilerin doğru ve tam olması çok önemlidir.</span>
             <Input className={styles.foodItemInput} placeholder={"Ürün İsmini Giriniz"} label="Ürün İsmi"
                    labelPlacement={"outside"}></Input>
             <Input className={styles.foodItemInput} placeholder={"Ürün Açıklamasını Giriniz"}
@@ -419,7 +422,8 @@ export default function MenuManage({params}) {
       <div onClick={deleteCategoryModal}
            className={`${styles.overlay} ${deleteCategoryModalIsOpen ? styles.overlay : styles.inactive}`}></div>
 
+
+
     </div>
-  )
-    ;
+  );
 }
